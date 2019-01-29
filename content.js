@@ -68,12 +68,17 @@ function loadPage()
         }
         else
         {
-            var price = jQuery(".current-price-value").attr("data-price-value"),
-			isButtonBuy = jQuery(".col-header.col-order").find(".btn-primary.btn-price-item-alert").length;
+            var price = jQuery(".current-price-value").attr("data-price-value"), // Цена
+			isButtonAlert = jQuery(".col-header.col-order").find(".btn-primary.btn-price-item-alert").length; // Кнопка "Уведомить", значит купить нельзя в этом городе
             jQuery("#block-result-dns").append(searchIndex+"/"+citys.length+"<br><div style='width:100%;height:20px;background:#ffdf63;'><div style='width:"+(Math.round((100/citys.length)*searchIndex))+"%;height:20px;background:#b8ea5b;'></div></div><div id='result-search-dns' style='width:100%;overflow-y:auto;height:250px;display:none;'></div>");
             if(price != undefined && price != null && price.length > 0)
             {
-                arrayResult.push([jQuery(".header-menu-city a").text().trim(),parseInt(price.trim())]);
+                arrayResult.push(
+				[ 
+					jQuery(".header-menu-city a").text().trim(),
+					parseInt(price.trim()),
+					isButtonAlert
+				]);
                 localStorage.setItem('arrayResult', JSON.stringify(arrayResult));
             }
             if(searchIndex < citys.length)
@@ -96,7 +101,10 @@ function loadPage()
                 var textResult = "";
                 for(var i = 0; i < arrayResult.length; i++)
                 {
-                    textResult += "Город: '"+arrayResult[i][0].trim()+"' Цена: '"+arrayResult[i][1]+"' <br>";
+					var isCanBuy = (arrayResult[i][2] > 0 ? 
+					"<span style='color:#ef625d;font-weight:bold;font-size:20px;'>-</span>" : 
+					"<span style='color:#2fda10;font-weight:bold;font-size:20px;'>+</span>");
+                    textResult += "Город: '"+arrayResult[i][0].trim()+"' Цена: '"+arrayResult[i][1]+"' " + isCanBuy + "<br>";
                 }
                 if(arrayResult.length <= 0) textResult = "Нет доступных результатов";
                 jQuery("#result-search-dns").html(textResult);
