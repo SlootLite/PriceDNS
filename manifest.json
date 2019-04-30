@@ -15,7 +15,7 @@
     "background": {
       "scripts": ["background.js"]
     },
-    "permissions": [ "https://www.dns-shop.ru/*", "unlimitedStorage", "tabs", "idle", "management", "webNavigation", "webRequest", "webRequestBlocking", "storage", "contextMenus", "chrome://favicon/", "clipboardWrite", "\u003Call_urls>" ],
+    "permissions": [ "https://www.dns-shop.ru/*", "unlimitedStorage", "storage" ],
   
     "browser_action": {
         "default_title": "DNS Price Checker",
