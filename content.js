@@ -50,7 +50,7 @@ function loadPage()
         var searchIndex = parseInt(localStorage.getItem('searchIndex')), arrayResult = (searchIndex == 1 ? [] : JSON.parse(localStorage.getItem('arrayResult'))),
         searchPage = localStorage.getItem('pageSearch');
         jQuery("body").prepend("<div id='block-result-dns' style='width:350px;position:fixed;top:0;left:0;z-index:999999;background:#fff;text-align:center;padding:3px;border:solid 4px #5e5e5e;'></div>");
-        if(searchPage.indexOf(window.location.toString()) == -1 && window.location.toString().indexOf(searchPage) == -1)
+        if(window.location.toString().indexOf(searchPage) == -1)
         {
             jQuery(document).on('click', '#button-cancel-search', function(e){
                 e.preventDefault();
