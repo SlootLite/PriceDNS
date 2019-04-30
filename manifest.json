@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "DNS Price Checker",
-    "version": "1.1",
+    "version": "1.3",
     
     "icons": {
       "128": "images/128.png"
@@ -12,10 +12,7 @@
         "js": [ "js/jquery-3.3.1.min.js", "content.js" ]
       }
     ],
-    "background": {
-      "scripts": ["background.js"]
-    },
-    "permissions": [ "https://www.dns-shop.ru/*", "unlimitedStorage", "tabs", "idle", "management", "webNavigation", "webRequest", "webRequestBlocking", "storage", "contextMenus", "chrome://favicon/", "clipboardWrite", "\u003Call_urls>" ],
+    "permissions": [ "https://www.dns-shop.ru/*", "unlimitedStorage", "storage" ],
   
     "browser_action": {
         "default_title": "DNS Price Checker",
